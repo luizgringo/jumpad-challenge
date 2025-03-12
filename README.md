@@ -25,9 +25,8 @@ O projeto segue uma arquitetura de componentes modular e reutilizável, organiza
 src/
 ├── components/         # Componentes reutilizáveis em toda a aplicação
 │   ├── PostCard.tsx    # Card para exibição de posts na listagem
-│   ├── PageBanner.tsx  # Banner para cabeçalho de páginas
-│   └── ...
-├── Layout/             # Componentes de layout da aplicação
+│   └── ImagePreloader.tsx # Componente para pré-carregamento de imagens
+├── layout/             # Componentes de layout da aplicação
 │   └── Layout.tsx      # Layout principal com header, footer e navegação
 ├── pages/              # Páginas da aplicação
 │   ├── Home/           # Página inicial com listagem de posts
@@ -41,10 +40,19 @@ src/
 │       ├── UserList/          # Listagem de usuários
 │       └── UserDetail/        # Detalhes do usuário
 ├── services/           # Serviços para comunicação com APIs
+│   ├── api.ts          # Funções para comunicação com a API
+│   └── errorHandler.ts # Tratamento de erros nas requisições
+├── hooks/              # Hooks personalizados
+│   └── useFetch.ts     # Hook para realizar requisições HTTP
+├── theme/              # Configuração do tema da aplicação
+│   └── theme.ts        # Definição do tema Material UI
 ├── types/              # Definições de tipos TypeScript
+│   ├── Post.ts         # Interface para o tipo Post
+│   ├── User.ts         # Interface para o tipo User
+│   └── Comment.ts      # Interface para o tipo Comment
 └── utils/              # Funções utilitárias
     ├── avatar.ts       # Geração de avatares para usuários
-    └── imagePreloader.ts # Pré-carregamento de imagens
+    └── imagePreloader.ts # Funções para pré-carregamento de imagens
 ```
 
 ## 🌟 Funcionalidades
@@ -105,26 +113,56 @@ Componente reutilizável para exibição de cards de posts, com suporte a:
 - Informações do autor (opcional)
 - Efeitos de hover para melhor interatividade
 
-### PageBanner
-
-Banner utilizado no topo das páginas principais, com:
-- Imagem de fundo customizável
-- Título e descrição configuráveis
-- Overlay para melhor legibilidade do texto
-
-### CoverImage
-
-Componente para exibição de imagens de capa com:
-- Indicador de carregamento
-- Transição suave quando a imagem é carregada
-- Overlay para melhor contraste
-
 ## 🌐 API
 
-A aplicação consome dados da JSONPlaceholder API, incluindo:
-- Posts: `/posts`
-- Comentários: `/comments`
-- Usuários: `/users`
+A aplicação consome dados da [JSONPlaceholder API](https://jsonplaceholder.typicode.com/), um serviço REST online gratuito que fornece dados fictícios para testes e prototipagem.
+
+### Endpoints Utilizados
+
+- **Posts**: `/posts` - Lista de publicações do blog
+  - Método: `GET`
+  - Resposta: Array de objetos com propriedades `id`, `userId`, `title` e `body`
+  - Exemplo: `https://jsonplaceholder.typicode.com/posts`
+  - Endpoint específico: `/posts/{id}` para obter detalhes de um post específico
+
+- **Comentários**: `/comments` - Comentários associados aos posts
+  - Método: `GET`
+  - Resposta: Array de objetos com propriedades `id`, `postId`, `name`, `email` e `body`
+  - Exemplo: `https://jsonplaceholder.typicode.com/comments?postId=1`
+  - Filtragem: Suporta filtragem por `postId` para obter comentários de um post específico
+
+- **Usuários**: `/users` - Informações dos autores dos posts
+  - Método: `GET`
+  - Resposta: Array de objetos com propriedades `id`, `name`, `username`, `email`, `address`, `phone`, `website` e `company`
+  - Exemplo: `https://jsonplaceholder.typicode.com/users`
+  - Endpoint específico: `/users/{id}` para obter detalhes de um usuário específico
+
+### Implementação
+
+A comunicação com a API é gerenciada através do módulo `services/api.ts`, que utiliza a Fetch API nativa para realizar as requisições HTTP. As funções são assíncronas e retornam Promises, facilitando o tratamento de erros e o carregamento de dados.
+
+```typescript
+// Exemplo simplificado da implementação
+export async function getPosts() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  if (!response.ok) throw new Error('Falha ao buscar posts');
+  return response.json();
+}
+
+export async function getPostComments(postId: number) {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
+  if (!response.ok) throw new Error('Falha ao buscar comentários');
+  return response.json();
+}
+```
+
+### Tratamento de Dados
+
+Como a API não fornece imagens reais para os posts ou avatares para os usuários, a aplicação implementa:
+
+- Geração de URLs de imagens aleatórias para posts usando serviços como Picsum Photos
+- Criação de avatares realistas para usuários através do serviço Pravatar
+- Pré-carregamento de imagens para melhorar a experiência do usuário
 
 ## 🚀 Deploy
 
