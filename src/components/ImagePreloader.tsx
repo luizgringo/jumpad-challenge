@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, CircularProgress, Typography } from "@mui/material";
-import { preloadImages, getPostImageUrl } from "../utils/imagePreloader";
+import { getPostImageUrl } from "../utils/imagePreloader";
 
 interface ImagePreloaderProps {
 	children: React.ReactNode;

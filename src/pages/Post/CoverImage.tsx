@@ -45,7 +45,7 @@ export function CoverImage({
 					backgroundColor: "rgba(0,0,0,.3)",
 				}}
 			/>
-			{!imageLoaded && (
+			{imageLoaded || (
 				<Box
 					sx={{
 						position: "absolute",

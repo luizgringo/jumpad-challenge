@@ -2,13 +2,10 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
-	AppBar,
 	Box,
 	Container,
-	Toolbar,
 	Typography,
 	Button,
-	Link,
 	CssBaseline,
 	Divider,
 	useTheme,
@@ -138,7 +135,9 @@ export function Layout({ children }: LayoutProps) {
 				</Stack>
 
 				{/* Navegação principal */}
-				{!isMobile ? (
+				{isMobile ? (
+					<Divider sx={{ mb: 3 }} />
+				) : (
 					<Tabs
 						value={activeTab}
 						onChange={handleTabChange}
@@ -167,8 +166,6 @@ export function Layout({ children }: LayoutProps) {
 							iconPosition="start"
 						/>
 					</Tabs>
-				) : (
-					<Divider sx={{ mb: 3 }} />
 				)}
 			</Container>
 
