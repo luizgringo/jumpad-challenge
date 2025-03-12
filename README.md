@@ -68,7 +68,7 @@ src/
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/jumpad-challenge.git
+git clone https://github.com/luizgringo/jumpad-challenge.git
 cd jumpad-challenge
 
 # Instale as dependências
@@ -130,10 +130,6 @@ A aplicação consome dados da JSONPlaceholder API, incluindo:
 
 A aplicação está deployada na Vercel e pode ser acessada em:
 [https://jumpad-challenge.vercel.app/](https://jumpad-challenge.vercel.app/)
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
