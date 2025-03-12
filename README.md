@@ -10,12 +10,12 @@ Este projeto é uma aplicação web moderna desenvolvida como parte do desafio t
 
 ## 🚀 Tecnologias Utilizadas
 
-- **React 18**: Biblioteca JavaScript para construção de interfaces de usuário
+- **React 19**: Biblioteca JavaScript para construção de interfaces de usuário
 - **TypeScript**: Superset tipado de JavaScript que compila para JavaScript puro
-- **Vite**: Build tool e dev server extremamente rápido para desenvolvimento moderno
-- **Material UI v5**: Framework de componentes React para um design consistente e responsivo
-- **React Router v6**: Biblioteca de roteamento para navegação entre páginas
-- **ESLint**: Ferramenta de linting para identificar e corrigir problemas no código
+- **Vite 6**: Build tool e dev server extremamente rápido para desenvolvimento moderno
+- **Material UI v6**: Framework de componentes React para um design consistente e responsivo
+- **React Router v7**: Biblioteca de roteamento para navegação entre páginas
+- **Biome**: Ferramenta de linting e formatação de código para JavaScript e TypeScript
 
 ## 🏗️ Arquitetura
 
