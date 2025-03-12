@@ -157,6 +157,13 @@ export function UserCard({ user, avatarUrl, postCount }: UserCardProps) {
 						textTransform: "none",
 						fontWeight: 600,
 						px: 3,
+						transition: "all 0.3s ease",
+						"&:hover": {
+							color: "#ffffff",
+							backgroundColor: theme.palette.primary.dark,
+							transform: "scale(1.05)",
+							boxShadow: theme.shadows[4],
+						},
 					}}
 				>
 					Ver perfil
