@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { Box } from "@mui/material";
 import { AnimatePresence } from "framer-motion";
@@ -34,6 +34,7 @@ const AnimatedRoutes = () => {
  * Componente principal da aplicação.
  *
  * Este componente configura o roteamento da aplicação e aplica o tema do Material UI.
+ * Usando HashRouter para melhor compatibilidade com hospedagem estática.
  *
  * @returns {JSX.Element} O componente App renderizado.
  */

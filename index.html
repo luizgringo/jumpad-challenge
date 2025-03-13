@@ -5,7 +5,23 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jumpad Blog - Uma plataforma para leitura de artigos e interação com usuários" />
+  <meta name="keywords" content="blog, artigos, posts, usuários" />
+  <meta property="og:title" content="Jumpad Blog" />
+  <meta property="og:description" content="Uma plataforma para leitura de artigos e interação com usuários" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jumpad-challenge.vercel.app/" />
   <title>Jumpad Blog</title>
+  <script>
+    // Verifica se a URL não contém # e não é a raiz
+    (function() {
+      var pathname = window.location.pathname;
+      if (pathname !== '/' && !window.location.hash) {
+        // Converte o caminho para formato de hash
+        window.location.replace('/#' + pathname);
+      }
+    })();
+  </script>
 </head>
 
 <body>

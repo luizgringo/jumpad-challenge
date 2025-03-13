@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
+		"build": "tsc -b && vite build && node vercel-build.js",
 		"lint": "biome check --write .",
 		"format": "biome format . --write",
 		"check": "biome check --apply .",
