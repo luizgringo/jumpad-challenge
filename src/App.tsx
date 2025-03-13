@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { Box } from "@mui/material";
 import { Layout } from "./layout/Layout";
@@ -15,7 +15,6 @@ import theme from "./theme/theme";
  * Componente principal da aplicação.
  *
  * Este componente configura o roteamento da aplicação e aplica o tema do Material UI.
- * Usando HashRouter para melhor compatibilidade com hospedagem estática.
  *
  * @returns {JSX.Element} O componente App renderizado.
  */
@@ -46,7 +45,7 @@ function App() {
 			<CssBaseline />
 			<Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
 				<ImagePreloader initialPostIds={initialPostIds} showLoadingIndicator={loading}>
-					<HashRouter>
+					<BrowserRouter>
 						<Layout>
 							<Routes>
 								<Route path="/" element={<Home />} />
@@ -55,7 +54,7 @@ function App() {
 								<Route path="/users/:id" element={<UserDetail />} />
 							</Routes>
 						</Layout>
-					</HashRouter>
+					</BrowserRouter>
 				</ImagePreloader>
 			</Box>
 		</ThemeProvider>
